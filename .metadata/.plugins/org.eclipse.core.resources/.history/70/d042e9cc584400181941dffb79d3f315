@@ -1,0 +1,9 @@
+package co.edu.usbcali.demo.modelo;
+
+public class Vehiculo {
+
+	private Motor motor;
+	private String color;
+	private String marca;
+	
+}

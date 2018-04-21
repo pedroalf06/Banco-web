@@ -1,0 +1,170 @@
+package co.edu.usbcali.banco.jpa;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.math.BigDecimal;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+import org.hibernate.dialect.identity.GetGeneratedKeysDelegate;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import co.edu.usbcali.banco.modelo.TipoUsuario;
+import co.edu.usbcali.banco.modelo.Usuario;
+
+class TestUsuario {
+
+	private final static Logger log=LoggerFactory.getLogger(TestUsuario.class);
+	
+	static EntityManagerFactory entityManagerFactory=null;
+	static EntityManager entityManager=null;
+	
+	String usuUsuario=new String("hfabio");
+	
+	@Test
+	@DisplayName ("ConsultarUsuario")
+	void etest() {
+	assertNotNull(entityManager, "El entitymanager es nulo");
+	String jpql = "SELECT usu FROM Usuario usu";
+	List<Usuario> losUsuarios = entityManager.createQuery(jpql).getResultList();	
+	losUsuarios.forEach(usuario->{});
+	
+	/*
+	for (Usuario usuario : losUsuarios) {
+		log.info("Usuario "+usuario.getUsuUsuario());
+		log.info("Nombre "+usuario.getNombre());
+	
+	}*/
+	
+	}
+	
+	
+	
+	
+	@Test
+	@DisplayName ("BorrarUsuario")
+	void dtest() {
+		assertNotNull(entityManager, "El entitymanager es nulo");
+		Usuario usuario=entityManager.find(Usuario.class, usuUsuario);
+		assertNotNull(usuario, "El cliente no existe");
+					
+		
+		entityManager.getTransaction().begin();
+		entityManager.remove(usuario);
+		entityManager.getTransaction().commit();
+
+		
+	}
+
+	
+	
+	
+	@Test
+	@DisplayName ("ModificarUsuario")
+	void ctest() {
+		assertNotNull(entityManager, "El ntitymanager es nulo");
+		Usuario usuario=entityManager.find(Usuario.class, usuUsuario);
+		assertNotNull(usuario, "El cliente no existe");
+		
+		
+		usuario.setActivo('N');
+		usuario.setClave("a1234");
+		usuario.setNombre("Hector Fabio Vergara");
+		usuario.setIdentificacion( new BigDecimal(1001));
+		
+		TipoUsuario tipoUsuario=entityManager.find(TipoUsuario.class, 2L);
+		assertNotNull(tipoUsuario,"El tipo de usuario no existe");
+		usuario.setTipoUsuario(tipoUsuario);				
+		
+		entityManager.getTransaction().begin();
+		entityManager.merge(usuario);
+		entityManager.getTransaction().commit();
+
+		
+	}
+
+	
+	
+	
+	@Test
+	@DisplayName ("ConsultarUsuario")
+	void btest() {
+		assertNotNull(entityManager, "El ntitymanager es nulo");
+		Usuario usuario=entityManager.find(Usuario.class, usuUsuario);
+		assertNotNull(usuario, "El cliente ya existe");
+		
+		log.info("usuario:"+usuario.getUsuUsuario() );
+		log.info("nombre:"+usuario.getNombre());
+		
+	
+	}
+	
+	
+	@Test
+	@DisplayName ("crearUsuario")
+	void atest() {
+		assertNotNull(entityManager, "El ntitymanager es nulo");
+		Usuario usuario=entityManager.find(Usuario.class, usuUsuario);
+		assertNull(usuario, "El cliente ya existe");
+		usuario=new Usuario();
+		
+		usuario.setActivo('S');
+		usuario.setUsuUsuario(usuUsuario);
+		usuario.setClave("a1234");
+		usuario.setNombre("Hector Fabio Vergara");
+		usuario.setIdentificacion( new BigDecimal(1001));
+		
+		TipoUsuario tipoUsuario=entityManager.find(TipoUsuario.class, 2L);
+		assertNotNull(tipoUsuario,"El tipo de usuario no existe");
+		usuario.setTipoUsuario(tipoUsuario);				
+		
+		entityManager.getTransaction().begin();
+		entityManager.persist(usuario);
+		entityManager.getTransaction().commit();
+
+		
+	}
+	
+	
+	@BeforeAll
+	public static void iniciar() {
+	log.info("ejecuto el @beforeAll");
+	entityManagerFactory=Persistence.createEntityManagerFactory("banco-logica");	
+	entityManager=entityManagerFactory.createEntityManager();
+	}
+	
+	@AfterAll
+	public static void finalizar() {
+	log.info("ejecuto el @afterAll");
+	entityManager.close();
+	entityManagerFactory.close();
+	}
+
+
+	
+	
+	@BeforeEach
+	public  void antes() { 
+	log.info("antes de la prueba");	
+	}
+	
+	@AfterEach
+	public  void despues() { 
+	log.info("despues de la prueba");	
+	
+	}
+	
+	
+
+
+}

@@ -1,0 +1,13 @@
+package co.edu.usbcali.banco.vista;
+
+import java.util.List;
+
+import javax.faces.bean.ManagedBean;
+
+import co.edu.usbcali.banco.modelo.Cliente;
+
+@ManagedBean
+public class ClienteVista {
+
+	private List<Cliente> listaClientes;
+}

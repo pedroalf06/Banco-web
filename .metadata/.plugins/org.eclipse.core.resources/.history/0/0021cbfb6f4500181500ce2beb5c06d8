@@ -1,0 +1,73 @@
+package co.edu.usbcali.banco.vista;
+
+import java.math.BigDecimal;
+import java.util.List;
+
+import co.edu.usbcali.banco.modelo.Cliente;
+import co.edu.usbcali.banco.modelo.TipoDocumento;
+
+public class DelegadoDeNegocio implements IDelegadoDeNegocio {
+
+	@Override
+	public void grabarCliente(Cliente cliente) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void modificarCliente(Cliente cliente) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void borrarCliente(Cliente cliente) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Cliente consultarClientePorId(BigDecimal clieId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Cliente> consultarClienteTodos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void grabarTipoDocumento(TipoDocumento tipoDocumento) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void modificarTipoDocumento(TipoDocumento tipoDocumento) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void borrarTipoDocumento(TipoDocumento tipoDocumento) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public TipoDocumento consultarTipoDocumentoPorId(long tdocId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<TipoDocumento> consultarTipoDocumentoTodos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	
+}

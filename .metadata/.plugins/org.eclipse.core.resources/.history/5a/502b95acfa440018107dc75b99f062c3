@@ -1,0 +1,37 @@
+package co.edu.usbcali.banco.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import co.edu.usbcali.banco.modelo.Cliente;
+
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration("/applicationContext.xml")
+class TestClienteDAO {
+	
+	@Autowired
+	private IClienteDAO clienteDAO;
+	
+	@Autowired
+	private ITipoDocumentoDAO tipoDocumentoDAO;
+	
+	
+	
+	
+	@Test
+	@Transactional(readOnly=false,propagation=Propagation.REQUIRED,rollbackFor=Exception.class)
+	void test() {
+		assertNotNull(clienteDAO);
+		assertNotNull(tipoDocumentoDAO);
+		Cliente cliente=new Cliente();	
+	}
+	
+
+}

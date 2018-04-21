@@ -1,0 +1,7 @@
+package co.edu.usbcali.banco.vista;
+
+public class DelegadoDeNegocio implements IDelegadoDeNegocio {
+
+	
+	
+}

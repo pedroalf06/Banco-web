@@ -1,0 +1,5 @@
+package co.edu.usbcali.banco.logica;
+
+public class ClienteLogicaImpl {
+
+}

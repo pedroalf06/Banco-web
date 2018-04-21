@@ -1,0 +1,14 @@
+package co.edu.usbcali.demo.modelo;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class TestConfigXml {
+
+	@Test
+	void test() {
+		fail("Not yet implemented");
+	}
+
+}

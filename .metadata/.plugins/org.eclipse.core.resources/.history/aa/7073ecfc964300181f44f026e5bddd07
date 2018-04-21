@@ -1,0 +1,14 @@
+package co.usbcali.banco.jpa;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class TestCliete {
+
+	@Test
+	void test() {
+		fail("Not yet implemented");
+	}
+
+}

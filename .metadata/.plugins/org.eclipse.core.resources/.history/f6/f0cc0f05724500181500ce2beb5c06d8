@@ -1,0 +1,43 @@
+package co.edu.usbcali.banco.vista;
+
+import java.util.List;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+
+import co.edu.usbcali.banco.modelo.Cliente;
+
+@ManagedBean
+public class ClienteVista {
+
+	@ManagedProperty("#{delegadoDeNgocio}")
+	private IDelegadoDeNegocio delegadoDeNegocio;
+	
+	private List<Cliente> listaClientes;
+
+
+	public List<Cliente> getListaClientes() {
+		if(listaClientes==null)
+			listaClientes=delegadoDeNegocio.consultarClienteTodos();
+		return listaClientes;
+	}
+
+	public void setListaClientes(List<Cliente> listaClientes) {
+		this.listaClientes = listaClientes;
+	}
+
+	public IDelegadoDeNegocio getDelegadoDeNegocio() {
+		return delegadoDeNegocio;
+	}
+
+	public void setDelegadoDeNegocio(IDelegadoDeNegocio delegadoDeNegocio) {
+		this.delegadoDeNegocio = delegadoDeNegocio;
+	}
+
+
+	
+
+	
+
+
+}

@@ -1,0 +1,64 @@
+	<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui">
+
+		<h:head>
+
+		</h:head>
+		
+		<h:body>
+		
+		
+		
+		<h:form>
+			<p:panel header="Gestion de Clientes">
+			
+				<h:panelGrid columns="2" border ="0">
+				<p:outputLabel value = "Identificacion"/>
+				<p:inputText id="txtIdentificaccion" binding="#{clienteVista.txtIdentificacion}"/>
+				
+				<p:outputLabel value = "Tipo Documento"/>
+				<p:selectOneMenu id="somTipoDocumento" >
+				
+				
+				
+				</p:selectOneMenu>
+				
+				<p:outputLabel value = "Nombre"/>
+				<p:inputText id="txtNombre" binding="#{clienteVista.txtNombre}"/>
+				
+				<p:outputLabel value = "Direccion"/>
+				<p:inputText id="txtDireccion" binding="#{clienteVista.txtDireccion}"/>
+				
+				<p:outputLabel value = "Telefono"/>
+				<p:inputText id="txtTeelefono" binding="#{clienteVista.txtTelefono}"/>
+				
+				<p:outputLabel value = "Email"/>
+				<p:inputText id="txtEmail" binding="#{clienteVista.txtEmail}"/>
+				
+				
+				</h:panelGrid>
+				
+				<h:panelGrid columns="4" border="0">
+				
+				<p:commandButton binding="#{clienteVista.btnCrear}" id="btnCrear" value="Crear"/>
+				<p:commandButton binding="#{clienteVista.btnModificar}" id="btnModificar" value="Modificar"/>				
+				<p:commandButton binding="#{clienteVista.btnBorrar}" id="btnBorrar" value="Borrar"/>
+				<p:commandButton binding="#{clienteVista.btnLimpiar}" id="btnLimpiar" value="Limpiar"/>
+				
+				
+				</h:panelGrid>
+			
+			</p:panel>
+		
+		
+		
+		</h:form>
+		
+		
+		
+		
+			
+		</h:body>
+	</html>

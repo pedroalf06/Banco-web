@@ -1,0 +1,92 @@
+package co.edu.usbcali.banco.jpa;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.math.BigDecimal;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import co.edu.usbcali.banco.modelo.TipoUsuario;
+import co.edu.usbcali.banco.modelo.Usuario;
+
+class TestUsuario {
+
+	private final static Logger log=LoggerFactory.getLogger(TestUsuario.class);
+	
+	static EntityManagerFactory entityManagerFactory=null;
+	static EntityManager entityManager=null;
+	
+	String usuUsuario=new String("hfabio");
+	
+	
+	
+	@Test
+	@DisplayName ("crearUsuario")
+	void atest() {
+		assertNotNull(entityManager, "El ntitymanager es nulo");
+		Usuario usuario=entityManager.find(Usuario.class, usuUsuario);
+		assertNull(usuario, "El cliente ya existe");
+		usuario=new Usuario();
+		
+		usuario.setActivo('S');
+		usuario.setUsuUsuario(usuUsuario);
+		usuario.setClave("a1234");
+		usuario.setNombre("Hector Fabio Vergara");
+		usuario.setIdentificacion(BigDecimal = new BigDecimal(1001));
+		
+		TipoUsuario tipoUsuario=entityManager.find(TipoUsuario.class, 2L);
+		assertNotNull(tipoUsuario,"El tipo de usuario no existe");
+		usuario.setTipoUsuario(tipoUsuario);				
+		
+		entityManager.get
+
+		
+	}
+	
+	
+	@BeforeAll
+	public static void iniciar() {
+	log.info("ejecuto el @beforeAll");
+	entityManagerFactory=Persistence.createEntityManagerFactory("banco-logica");	
+	entityManager=entityManagerFactory.createEntityManager();
+	}
+	
+	@AfterAll
+	public static void finalizar() {
+	log.info("ejecuto el @afterAll");
+	entityManager.close();
+	entityManagerFactory.close();
+	}
+
+
+	@Test
+	void btest() {
+		log.info("se ejecuto la prueba B");
+	}
+	
+	@BeforeEach
+	public  void antes() { 
+	log.info("antes de la prueba");	
+	}
+	
+	@AfterEach
+	public  void despues() { 
+	log.info("despues de la prueba");	
+	
+	}
+	
+	
+
+
+}
